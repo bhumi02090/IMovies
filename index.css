@@ -1,0 +1,63 @@
+:root {
+  --bg: #0b0d12;
+  --panel: #151922;
+  --line: #262c3a;
+  --accent: #f5b301;
+  --taken: #3a3f4d;
+}
+body { background: var(--bg); font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif; }
+a { color: var(--accent); }
+
+.imovies-nav { background: var(--panel); }
+.brand { font-weight: 800; letter-spacing: .5px; color: var(--accent) !important; }
+.search-box { max-width: 260px; background: var(--panel); border-color: var(--line); }
+
+/* Movie poster tiles */
+.poster {
+  position: relative; aspect-ratio: 2 / 3; border-radius: 10px; padding: 14px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  border: 1px solid var(--line); transition: transform .15s ease;
+}
+a:hover .poster { transform: translateY(-3px); }
+.poster-title { font-size: 1.25rem; font-weight: 700; color: #fff; line-height: 1.15; }
+.poster-rating {
+  position: absolute; top: 10px; right: 10px; font-size: .75rem;
+  background: rgba(0,0,0,.55); color: var(--accent); padding: 2px 8px; border-radius: 20px;
+}
+.showtime { text-align: center; min-width: 120px; }
+
+/* Seat map */
+.screen-bar {
+  margin: 1.5rem auto 1.25rem; max-width: 520px; text-align: center; font-size: .8rem;
+  color: #9aa3b5; border-top: 4px solid var(--accent); border-radius: 50% 50% 0 0 / 14px 14px 0 0;
+  padding-top: 6px;
+}
+.seat-map { display: flex; flex-direction: column; align-items: center; gap: 8px; overflow-x: auto; padding-bottom: 4px; }
+.seat-row { display: flex; gap: 8px; align-items: center; }
+.row-label { width: 18px; color: #9aa3b5; font-size: .8rem; }
+.seat {
+  width: 34px; height: 34px; border-radius: 8px 8px 4px 4px; font-size: .75rem;
+  background: var(--panel); color: #cfd6e4; border: 1px solid #3b4357; cursor: pointer;
+}
+.seat:hover:not(:disabled) { border-color: var(--accent); }
+.seat:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.seat.picked { background: var(--accent); color: #111; border-color: var(--accent); font-weight: 700; }
+.seat.taken { background: var(--taken); border-color: var(--taken); color: #7b8296; cursor: not-allowed; }
+.seat-key { display: inline-block; width: 14px; height: 14px; border-radius: 4px; vertical-align: -2px; margin-right: 6px; background: var(--panel); border: 1px solid #3b4357; }
+.seat-key.picked { background: var(--accent); border-color: var(--accent); }
+.seat-key.taken { background: var(--taken); border-color: var(--taken); }
+
+.booking-bar {
+  position: sticky; bottom: 0; margin-top: 1.5rem; padding: 14px 16px; background: var(--panel);
+  border: 1px solid var(--line); border-radius: 10px; display: flex; justify-content: space-between;
+  align-items: center; gap: 12px; flex-wrap: wrap;
+}
+
+/* Booking tickets */
+.ticket { display: flex; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; align-items: stretch; }
+.ticket-color { width: 10px; }
+.ticket.cancelled { opacity: .55; }
+
+.auth-card { max-width: 400px; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 1.75rem; margin-top: 2rem; }
+
+@media (prefers-reduced-motion: reduce) { .poster { transition: none; } }
